@@ -140,6 +140,9 @@ export function isValid(date, minDate) {
 // ** Date Formatting **
 
 export function formatDate(date, formatStr, locale) {
+  if (typeof formatStr === 'function') {
+    return formatStr(date, locale);
+  }
   if (locale === "en") {
     return format(date, formatStr, { awareOfUnicodeTokens: true });
   }
